@@ -112,6 +112,17 @@ a:hover {
     margin-bottom: 1rem;
 }
 
+/* CANVAS */
+
+#my-canvas {
+    border: 1px solid rgb(0, 17, 255);
+}
+
+.canvas-container {
+    justify-content: center;
+    margin: 2rem;
+}
+
 /* MEME CREATE MODAL */
 
 .modal {

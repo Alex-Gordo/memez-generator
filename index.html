@@ -33,24 +33,37 @@
           <option value="Girl">
         </datalist>
     </div>
+
+
+    <div class="canvas-container container flex align-center">
+        <canvas id="my-canvas" width="500" height="500">
+        Update your browser to enjoy canvas!
+    </canvas>
+    <form>
+        <label for="text">Enter your text:</label>
+        <input oninput="onChangeLine(this.value)" type="text" name="text">
+      </form>
+    </div>
+
+
     <main class="main-content container card-container">
         <div class="card">
-            <img class="card-image" onclick="onEditMeme()" src="./meme-img/1.jpg" alt="meme-image">
+            <img class="card-image" onclick="onSelectMeme(this.src)" src="../meme-img/1.jpg" alt="meme-image">
         </div>
         <div class="card">
-            <img class="card-image" onclick="onEditMeme()" src="./meme-img/oprah.jpg" alt="meme-image">
+            <img class="card-image" onclick="onSelectMeme(this.src)" src="../meme-img/2.jpg" alt="meme-image">
         </div>
         <div class="card">
-            <img class="card-image" onclick="onEditMeme()" src="./meme-img/3.jpg" alt="meme-image">
+            <img class="card-image" onclick="onSelectMeme(this.src)" src="../meme-img/3.jpg" alt="meme-image">
         </div>
         <div class="card">
-            <img class="card-image" src="./meme-img/4.jpg" alt="meme-image">
+            <img class="card-image" src="../meme-img/4.jpg" alt="meme-image">
         </div>
         <div class="card">
-            <img class="card-image" src="./meme-img/5.jpg" alt="meme-image">
+            <img class="card-image" src="../meme-img/5.jpg" alt="meme-image">
         </div>
         <div class="card">
-            <img class="card-image" src="./meme-img/6.jpg" alt="meme-image">
+            <img class="card-image" src="../meme-img/6.jpg" alt="meme-image">
         </div>
         <div class="card">
             <img class="card-image" src="./meme-img/7.jpg" alt="meme-image">
