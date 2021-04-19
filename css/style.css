@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+/* TYPOGRAPHY */
+
+/* font-family: Impact, 'Arial Narrow Bold', sans-serif;  Font for meme text*/
+
+@font-face {
+    font-family: rock;
+    src: url(../fonts/RocknRollOne-Regular.ttf);
+}
+
+/* BASE */
+
+html {
+    font-family: rock;
+    color: #000000;
+    line-height: 1.714;
+}
+
+body {
+    margin: 0;
+    font-size: .875rem;
+    background-color: lightsalmon;
+}
+
+img {
+    width: 100%;
+    /* object-fit: contain;
+    object-position: top; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 1rem;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 1.875rem;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+a:hover {
+    color: #000;
+}
+
+/* LAYOUT */
+
+.container {
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.card-container>*:not(:last-child) {
+    margin-inline-end: 20px;
+}
+
+.card-container>*:last-child {
+    margin-inline-end: 20px;
+}
+
+/* COMPONENTS */
+
+/* header */
+
+.main-header {
+    height: 100px;
+}
+
+.logo {
+    color: #000;
+    font-family: rock, sans-serif;
+    font-size: 1.875rem;
+    letter-spacing: 0.2em;
+}
+
+.logo::after {
+    color: rgb(251, 251, 251);
+    content: '.';
+}
+
+.main-nav>*:not(:last-child) {
+    margin-inline-end: 1rem;
+}
+
+.main-nav a {
+    color: inherit;
+}
+
+.main-nav a:hover {
+    color: red;
+}
+
+/* CARDS */
+
+.card-image {
+    margin-bottom: 1rem;
+}
+
+/* MEME CREATE MODAL */
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    max-height: 80%;
+    width: 80vw;
+    max-width: 80%;
+    background-color: #efe1b5;
+    color: black;
+    z-index: 10;
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    display: none;
+}
+
+/* HELPERS */
+
+/* flex helpers */
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* list helpers */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* MEDIA QUERIES */

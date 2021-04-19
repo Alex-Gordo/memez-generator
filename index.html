@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Memezzz</title>
+</head>
+
+<body onload="onInit()">
+
+    <header class="main-header container flex space-between align-center">
+        <div class="logo">memezzz</div>
+        <ul class="main-nav flex clean-list">
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Memes</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </header>
+
+    <div class="search-bar container flex align-center">
+        Search your meme:
+        <input type="text" name="" id="" placeholder="Please enter a search word">
+        <input list="keywords">
+        <datalist id="keywords">
+          <option value="Trump">
+          <option value="Cat">
+          <option value="Happy">
+          <option value="Operah">
+          <option value="Girl">
+        </datalist>
+    </div>
+    <main class="main-content container card-container">
+        <div class="card">
+            <img class="card-image" onclick="onEditMeme()" src="./meme-img/1.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" onclick="onEditMeme()" src="./meme-img/oprah.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" onclick="onEditMeme()" src="./meme-img/3.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" src="./meme-img/4.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" src="./meme-img/5.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" src="./meme-img/6.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" src="./meme-img/7.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" src="./meme-img/8.jpg" alt="meme-image">
+        </div>
+        <div class="card">
+            <img class="card-image" src="./meme-img/9.jpg" alt="meme-image">
+        </div>
+
+    </main>
+
+    <div class="meme-editor modal"></div>
+    <div class="overlay" class="active"></div>
+
+    <footer class="main-footer">
+        <div class="footer-container container flex space-between align-center">
+            <small>All right reserved to Alex Gordon 2021</small>
+        </div>
+    </footer>
+
+
+
+    <script src="./js/util-service.js"></script>
+    <script src="./js/storage-service.js"></script>
+    <script src="./js/meme-service.js"></script>
+    <script src="./js/meme-controller.js"></script>
+</body>
+
+</html>
