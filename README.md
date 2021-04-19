@@ -1,1 +1,0 @@
-# memez-generator
