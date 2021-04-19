@@ -2,18 +2,31 @@
 
 
 function onInit() {
-    //TODO : render all cards!
+    renderImages()
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d')
+}
+
+function renderImages() {
+    //var images = loadFromStorage(KEY) //add storage later
+    var strHTML = gImgs.map(function (image) {
+        return `
+        <div class="card">
+        <img class="card-image" onclick="onSelectMeme(this.src,${image.id})" src="./meme-img/${image.id}.jpg" alt="meme-image">
+        </div>
+        `
+    })
+    document.querySelector('.card-container').innerHTML = strHTML.join('');
 }
 
 function onChangeLine(text) {
     drawNewLine(text)
 }
 
-function onSelectMeme(imgId) {
-    var currUrl = imgId
+function onSelectMeme(imgSrc, id) {
+    var currUrl = imgSrc
     drawImg(currUrl)
+    updateImgId(id)
 }
 
 

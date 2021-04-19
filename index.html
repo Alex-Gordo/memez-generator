@@ -26,56 +26,35 @@
         <input type="text" name="" id="" placeholder="Please enter a search word">
         <input list="keywords">
         <datalist id="keywords">
-          <option value="Trump">
-          <option value="Cat">
-          <option value="Happy">
-          <option value="Operah">
-          <option value="Girl">
+            <option value="Trump">
+            <option value="Cat">
+            <option value="Happy">
+            <option value="Operah">
+            <option value="Girl">
         </datalist>
     </div>
 
 
     <div class="canvas-container container flex align-center">
         <canvas id="my-canvas" width="500" height="500">
-        Update your browser to enjoy canvas!
-    </canvas>
-    <form>
-        <label for="text">Enter your text:</label>
-        <input oninput="onChangeLine(this.value)" type="text" name="text">
-      </form>
+            Update your browser to enjoy canvas!
+        </canvas>
+        <form>
+            <label for="text">Enter your text:</label>
+            <input oninput="onChangeLine(this.value)" type="text" name="text">
+            <div class="settings-container container flex align-center">
+                <img src="./icons/increase font - icon.png" alt="text-size-up" srcset="" onclick="onUpdateTxtSize(5)"></button>
+                <img src="./icons/decrease font - icon.png" alt="text-size-down" srcset="" onclick="onUpdateTxtSize(-5)"></button>
+                <img src="./icons/arrow-up.png" alt="text-position-up" srcset="" onclick="onUpdateTxtPos(-20)"></button>
+                <img src="./icons/arrow-down.png" alt="text-position-down" srcset="" onclick="onUpdateTxtPos(20)"></button>
+
+
+            </div>
+
+        </form>
     </div>
 
-
-    <main class="main-content container card-container">
-        <div class="card">
-            <img class="card-image" onclick="onSelectMeme(this.src)" src="../meme-img/1.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" onclick="onSelectMeme(this.src)" src="../meme-img/2.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" onclick="onSelectMeme(this.src)" src="../meme-img/3.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" src="../meme-img/4.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" src="../meme-img/5.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" src="../meme-img/6.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" src="./meme-img/7.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" src="./meme-img/8.jpg" alt="meme-image">
-        </div>
-        <div class="card">
-            <img class="card-image" src="./meme-img/9.jpg" alt="meme-image">
-        </div>
-
-    </main>
+    <main class="main-content container card-container"></main>
 
     <div class="meme-editor modal"></div>
     <div class="overlay" class="active"></div>
