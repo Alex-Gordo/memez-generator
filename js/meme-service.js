@@ -16,18 +16,45 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Your text here',
+            txt: 'First line',
             size: 20,
             align: 'center',
             color: 'white',
             posx: 250,
             posy: 50,
-        }
+        },
+        {
+            txt: 'Second line',
+            size: 20,
+            align: 'center',
+            color: 'white',
+            posx: 250,
+            posy: 450,
+        },
     ]
 }
 
 var gCurrLine = gMeme.lines[gMeme.selectedLineIdx]
 var gCurrUrl
+
+function onSwitchLine() { // bug when switching 
+    if (gMeme.selectedLineIdx === 0) {
+        gMeme.selectedLineIdx = 1
+        gCurrLine = gMeme.lines[1]
+        return;
+    }
+    if (gMeme.selectedLineIdx === 1) {
+        gMeme.selectedLineIdx = 0
+        gCurrLine = gMeme.lines[0]
+        return;
+    }
+}
+
+function drawAllLines() { // renders all the lines
+    gMeme.lines.map(function (line) {
+        drawText(line.txt, line.posx, line.posy)
+    })
+}
 
 function updateImgId(id) {
     gMeme.selectedImgId = id
@@ -39,7 +66,7 @@ function drawImg(url) {
     img.src = gCurrUrl;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        drawText(gCurrLine.txt, gCurrLine.posx, gCurrLine.posy)
+        drawAllLines()
     }
 }
 
@@ -61,13 +88,14 @@ function drawNewLine(text) {
 function onUpdateTxtSize(diff) {
     gCurrLine.size += diff
     drawImg(gCurrUrl)
+    //drawAllLines()
 }
 
 function onUpdateTxtPos(diff) {
     gCurrLine.posy += diff
-    clearCanvas()
     drawImg(gCurrUrl)
-    drawText(gCurrLine.txt, gCurrLine.posx, gCurrLine.posy)
+    //drawText(line.txt, line.posx, line.posy)
+    //drawAllLines()
 }
 
 function clearCanvas() {

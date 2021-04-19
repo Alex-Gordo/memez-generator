@@ -43,14 +43,13 @@
             <label for="text">Enter your text:</label>
             <input oninput="onChangeLine(this.value)" type="text" name="text">
             <div class="settings-container container flex align-center">
-                <img src="./icons/increase font - icon.png" alt="text-size-up" srcset="" onclick="onUpdateTxtSize(5)"></button>
-                <img src="./icons/decrease font - icon.png" alt="text-size-down" srcset="" onclick="onUpdateTxtSize(-5)"></button>
-                <img src="./icons/arrow-up.png" alt="text-position-up" srcset="" onclick="onUpdateTxtPos(-20)"></button>
-                <img src="./icons/arrow-down.png" alt="text-position-down" srcset="" onclick="onUpdateTxtPos(20)"></button>
-
+                <img src="./icons/increase font - icon.png" alt="text-size-up" onclick="onUpdateTxtSize(5)"></button>
+                <img src="./icons/decrease font - icon.png" alt="text-size-down" onclick="onUpdateTxtSize(-5)"></button>
+                <img src="./icons/arrow-up.png" alt="text-position-up" onclick="onUpdateTxtPos(-20)"></button>
+                <img src="./icons/arrow-down.png" alt="text-position-down" onclick="onUpdateTxtPos(20)"></button>
+                <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch-line" onclick="onSwitchLine()"></button>
 
             </div>
-
         </form>
     </div>
 
@@ -61,7 +60,7 @@
 
     <footer class="main-footer">
         <div class="footer-container container flex space-between align-center">
-            <small>All right reserved to Alex Gordon 2021</small>
+            <small>All rights reserved to Alexander Gordon 2021</small>
         </div>
     </footer>
 
