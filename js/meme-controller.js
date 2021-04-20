@@ -5,7 +5,20 @@ function onInit() {
     renderImages()
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d')
+     window.addEventListener('resize', function(){
+        // gCanvas.width = window.innerWidth
+        // gCanvas.height = window.innerHeight
+        //resizeCanvas()
+    })
 }
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('#my-canvas');
+    // Note: changing the canvas dimension this way clears the canvas
+    gCanvas.width = elContainer.offsetWidth
+    gCanvas.height = elContainer.offsetHeight
+}
+
 
 function renderImages() {
     //var images = loadFromStorage(KEY) //add storage later
@@ -28,6 +41,9 @@ function onSelectMeme(imgSrc, id) {
     drawImg(currUrl)
     updateImgId(id)
 }
+
+
+
 
 
 // function onEditMeme() {

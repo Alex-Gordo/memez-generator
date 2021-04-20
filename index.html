@@ -6,49 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Memezzz</title>
 </head>
 
 <body onload="onInit()">
-
-    <header class="main-header container flex space-between align-center">
+    <header class="nav-bar container flex space-between align-center">
         <div class="logo">memezzz</div>
         <ul class="main-nav flex clean-list">
-            <li><a href="#">Gallery</a></li>
+            <li><a class="active" href="#">Gallery</a></li>
             <li><a href="#">Memes</a></li>
-            <li><a href="#">About</a></li>
         </ul>
     </header>
 
-    <div class="search-bar container flex align-center">
-        Search your meme:
-        <input type="text" name="" id="" placeholder="Please enter a search word">
-        <input list="keywords">
-        <datalist id="keywords">
-            <option value="Trump">
-            <option value="Cat">
-            <option value="Happy">
-            <option value="Operah">
-            <option value="Girl">
-        </datalist>
-    </div>
+    <div class="search-bar flex align-center">
+        <input type="text" placeholder="Search keyword.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
 
+    </div>
 
     <div class="canvas-container container flex align-center">
         <canvas id="my-canvas" width="500" height="500">
             Update your browser to enjoy canvas!
         </canvas>
+
         <form>
-            <label for="text">Enter your text:</label>
-            <input oninput="onChangeLine(this.value)" type="text" name="text">
+            <div class="text-input-container container flex align-center">
+                <label hidden for="text">Enter your text : </label>
+                <input oninput="onChangeLine(this.value)" type="text" name="text" placeholder="Enter your text..">
+            </div>
+
             <div class="settings-container container flex align-center">
                 <img src="./icons/increase font - icon.png" alt="text-size-up" onclick="onUpdateTxtSize(5)"></button>
                 <img src="./icons/decrease font - icon.png" alt="text-size-down" onclick="onUpdateTxtSize(-5)"></button>
                 <img src="./icons/arrow-up.png" alt="text-position-up" onclick="onUpdateTxtPos(-20)"></button>
                 <img src="./icons/arrow-down.png" alt="text-position-down" onclick="onUpdateTxtPos(20)"></button>
-                <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch-line" onclick="onSwitchLine()"></button>
-
+                <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch-line"
+                    onclick="onSwitchLine()"></button>
             </div>
         </form>
     </div>
@@ -59,12 +54,10 @@
     <div class="overlay" class="active"></div>
 
     <footer class="main-footer">
-        <div class="footer-container container flex space-between align-center">
+        <div class="footer-container container">
             <small>All rights reserved to Alexander Gordon 2021</small>
         </div>
     </footer>
-
-
 
     <script src="./js/util-service.js"></script>
     <script src="./js/storage-service.js"></script>

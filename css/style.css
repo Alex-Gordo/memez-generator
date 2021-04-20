@@ -4,8 +4,6 @@
 
 /* TYPOGRAPHY */
 
-/* font-family: Impact, 'Arial Narrow Bold', sans-serif;  Font for meme text*/
-
 @font-face {
     font-family: rock;
     src: url(../fonts/RocknRollOne-Regular.ttf);
@@ -27,11 +25,11 @@ body {
 
 img {
     width: 100%;
-    /* object-fit: contain;
-    object-position: top; */
+    object-fit: contain;
+    object-position: top;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
     margin: 0 0 1rem;
     font-weight: normal;
 }
@@ -42,30 +40,33 @@ h2 {
 
 p {
     margin: 0 0 1rem;
-}
+} */
 
 a {
     text-decoration: none;
-    color: red;
 }
 
-a:hover {
+/* a:hover {
     color: #000;
-}
+} */
 
 button {
-    background: #4267b2;
-    border: 1px solid #4267b2;
-    color: #fff;
+    background: #eecfa8;
+    border: 1px solid black;
+    color: black;
     cursor: pointer;
-    font-family: Helvetica, Arial, sans-serif;
     margin: 0 5px;
-    user-select: none;
-    white-space: nowrap;
     padding: 5px 10px;
     border-radius: 3px;
-    text-decoration: none;
     width: 3rem;
+}
+
+input[type=text] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid grey;
+    width: 50%;
+    background: #eecfa8;
 }
 
 /* LAYOUT */
@@ -78,7 +79,7 @@ button {
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .card-container>*:not(:last-child) {
@@ -93,8 +94,10 @@ button {
 
 /* header */
 
-.main-header {
+.nav-bar {
     height: 100px;
+    border-bottom: 1px #2b2b2b solid;
+    margin-bottom: 1rem;
 }
 
 .logo {
@@ -118,21 +121,25 @@ button {
 }
 
 .main-nav a:hover {
-    color: red;
+    color: rgb(255, 254, 254);
+}
+
+/* search bar */
+
+.search-bar {
+    justify-content: center;
 }
 
 /* Settings */
 
-.settings-container img {
-   width: 2rem;
-   cursor: pointer;
-   margin-inline-start: 1rem;
+.settings-container {
+    flex-wrap: wrap;
 }
 
-/* CARDS */
-
-.card-image {
-    margin-bottom: 1rem;
+.settings-container img {
+    width: 2rem;
+    cursor: pointer;
+    margin-inline-start: 1rem;
 }
 
 /* CANVAS */
@@ -143,7 +150,8 @@ button {
 
 .canvas-container {
     justify-content: center;
-    margin: 2rem;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
 }
 
 /* MEME CREATE MODAL */
@@ -177,6 +185,18 @@ button {
     display: none;
 }
 
+/* CARDS */
+
+.card-image {
+    margin-bottom: 1rem;
+}
+
+/* FOOTER */
+
+.main-footer {
+    text-align: center;
+}
+
 /* HELPERS */
 
 /* flex helpers */
@@ -202,3 +222,99 @@ button {
 }
 
 /* MEDIA QUERIES */
+
+/* V.SMALL */
+
+@media (min-width: 300px) {
+    .container {
+        max-width: 600px;
+    }
+    .logo {
+        font-size: 1.2rem;
+    }
+    .nav-bar{
+        justify-content: space-between;
+    }
+    .main-nav{
+        font-size: 0.7rem;
+    }
+    .search-bar input[type=text] {
+        width: 55%;
+    }
+    #my-canvas {
+        width: 280px;
+        margin-bottom: 1rem;
+        border: none;
+        justify-content: center;
+        justify-self: center;
+    }
+    .canvas-container {
+        justify-content: center;
+        flex-direction: column;
+    }
+    .text-input-container input[type=text] {
+        font-size: 1rem;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .settings-container img {
+        width: 1.5rem;
+        cursor: pointer;
+        margin-inline-start: 1rem;
+    }
+}
+
+/* SMALL */
+
+@media (min-width: 458px) {
+    .container {
+        max-width: 800px;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .nav-bar{
+        justify-content: space-between;
+    }
+    .main-nav{
+        font-size: 1rem;
+    }
+    .search-bar input[type=text] {
+        width: 40%;
+    }
+    #my-canvas {
+        width: 400px;
+    }
+    .text-input-container input[type=text] {
+        font-size: 1rem;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* MEDIUM */
+
+@media (min-width: 800px) {
+    .container {
+        max-width: 1000px;
+    }
+    #my-canvas {
+        width: 500px;
+    }
+    .canvas-container {
+        justify-content: center;
+        flex-direction: row;
+    }
+    .logo {
+        font-size: 1.875rem;
+    }
+}
+
+
+/* LARGE */
+
+@media (min-width: 1000px) {
+    .container {
+        max-width: 1920px;
+    }
+}

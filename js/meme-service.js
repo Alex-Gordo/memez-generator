@@ -34,17 +34,18 @@ var gMeme = {
     ]
 }
 
-var gCurrLine = gMeme.lines[gMeme.selectedLineIdx]
+var gCurrLine = gMeme.lines[0]
 var gCurrUrl
 
 function onSwitchLine() { // bug when switching 
-    if (gMeme.selectedLineIdx === 0) {
-        gMeme.selectedLineIdx = 1
+    var selectedIdx = gMeme.selectedLineIdx
+    if (selectedIdx === 0) {
+        selectedIdx = 1
         gCurrLine = gMeme.lines[1]
         return;
     }
-    if (gMeme.selectedLineIdx === 1) {
-        gMeme.selectedLineIdx = 0
+    if (selectedIdx === 1) {
+        selectedIdx = 0
         gCurrLine = gMeme.lines[0]
         return;
     }
@@ -52,7 +53,7 @@ function onSwitchLine() { // bug when switching
 
 function drawAllLines() { // renders all the lines
     gMeme.lines.map(function (line) {
-        drawText(line.txt, line.posx, line.posy)
+        drawText(line.txt, line.posx, line.posy, line.size)
     })
 }
 
@@ -70,11 +71,11 @@ function drawImg(url) {
     }
 }
 
-function drawText(text, x, y) {
+function drawText(text, x, y, fontSize) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = gCurrLine.color
-    gCtx.font = gCurrLine.size + 'px Impact'
+    gCtx.font = fontSize + 'px Impact'
     gCtx.textAlign = gCurrLine.align
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
@@ -88,7 +89,6 @@ function drawNewLine(text) {
 function onUpdateTxtSize(diff) {
     gCurrLine.size += diff
     drawImg(gCurrUrl)
-    //drawAllLines()
 }
 
 function onUpdateTxtPos(diff) {
