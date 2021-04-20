@@ -33,24 +33,26 @@ a {
     text-decoration: none;
 }
 
-button {
-    background: #ffd078e8;
-    border: 1px solid black;
-    color: black;
-    cursor: pointer;
-    margin: 0 5px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    width: 3rem;
-}
-
 input[type=text] {
     padding: 10px;
     font-size: 1rem;
     border: 1px solid grey;
     width: 50%;
     background: #ffd078e8;
-    /* background: #eecfa8; */
+}
+
+input[type=color] {
+    border: 1px solid grey;
+    height: 2rem;
+    background: #ffd078e8;
+}
+
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid grey;
+    width: 23%;
+    background: #ffd078e8;
 }
 
 /* LAYOUT */
@@ -115,16 +117,49 @@ input[type=text] {
     justify-content: center;
 }
 
+.search-bar button {
+    background: #ffd078e8;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    width: 3rem;
+}
+
 /* Settings */
 
 .settings-container {
     flex-wrap: wrap;
 }
 
+.font-setting-container {
+    width: 100%;
+    flex-direction: column;
+}
+
+.settings-container a, button {
+    background: #ffd078e8;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
 .settings-container img {
     width: 2rem;
     cursor: pointer;
     margin-inline-start: 1rem;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
 }
 
 /* CANVAS */
@@ -278,6 +313,7 @@ input[type=text] {
     .canvas-container {
         justify-content: center;
         flex-direction: row;
+        max-width: 1000px;
     }
     .logo {
         font-size: 1.875rem;
@@ -289,6 +325,9 @@ input[type=text] {
 @media (min-width: 1000px) {
     .container {
         max-width: 1920px;
+    }
+    .canvas-container {
+        max-width: 1000px;
     }
 }
 

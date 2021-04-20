@@ -3,6 +3,7 @@
 var gCanvas
 var gCtx
 var gKeywords = { 'happy': 12, 'funny': 1 }
+var gCurrFont = 'Impact'
 
 var gImgs = [
     { id: 1, url: './meme-img/1.jpg', keywords: ['trump'] },
@@ -101,7 +102,7 @@ function drawText(text, x, y, fontSize) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = gCurrLine.color
-    gCtx.font = fontSize + 'px Impact'
+    gCtx.font = fontSize + 'px ' + gCurrFont
     gCtx.textAlign = gCurrLine.align
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
@@ -130,6 +131,11 @@ function getImgById(id) {
     return gImgs.find(function (img) {
         return img.id === id
     })
+}
+
+function setFont(font){
+    gCurrFont= font;
+    drawImg(gCurrUrl)
 }
 
 
