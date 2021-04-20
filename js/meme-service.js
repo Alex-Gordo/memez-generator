@@ -9,6 +9,22 @@ var gImgs = [
     { id: 2, url: './meme-img/2.jpg', keywords: ['dog'] },
     { id: 3, url: './meme-img/3.jpg', keywords: ['dog', 'baby'] },
     { id: 4, url: './meme-img/4.jpg', keywords: ['cat', 'sleep'] },
+    { id: 5, url: './meme-img/5.jpg', keywords: [] },
+    { id: 6, url: './meme-img/6.jpg', keywords: [] },
+    { id: 7, url: './meme-img/7.jpg', keywords: [] },
+    { id: 8, url: './meme-img/8.jpg', keywords: [] },
+    { id: 9, url: './meme-img/9.jpg', keywords: [] },
+    { id: 10, url: './meme-img/10.jpg', keywords: [] },
+    { id: 11, url: './meme-img/11.jpg', keywords: [] },
+    { id: 12, url: './meme-img/12.jpg', keywords: [] },
+    { id: 13, url: './meme-img/13.jpg', keywords: [] },
+    { id: 14, url: './meme-img/14.jpg', keywords: [] },
+    { id: 15, url: './meme-img/15.jpg', keywords: [] },
+    { id: 16, url: './meme-img/16.jpg', keywords: [] },
+    { id: 17, url: './meme-img/17.jpg', keywords: [] },
+    { id: 18, url: './meme-img/18.jpg', keywords: [] },
+    { id: 19, url: './meme-img/19.jpg', keywords: [] },
+    { id: 20, url: './meme-img/20.jpg', keywords: [] },
 ]
 
 var gMeme = {
@@ -17,7 +33,7 @@ var gMeme = {
     lines: [
         {
             txt: 'First line',
-            size: 20,
+            size: 40,
             align: 'center',
             color: 'white',
             posx: 250,
@@ -25,7 +41,7 @@ var gMeme = {
         },
         {
             txt: 'Second line',
-            size: 20,
+            size: 40,
             align: 'center',
             color: 'white',
             posx: 250,
@@ -37,18 +53,28 @@ var gMeme = {
 var gCurrLine = gMeme.lines[0]
 var gCurrUrl
 
-function onSwitchLine() { // bug when switching 
+function switchLine() { 
     var selectedIdx = gMeme.selectedLineIdx
     if (selectedIdx === 0) {
-        selectedIdx = 1
+        gMeme.selectedLineIdx = 1
         gCurrLine = gMeme.lines[1]
+        markSelectedLine(gCurrLine.posx,gCurrLine.posy)
         return;
     }
     if (selectedIdx === 1) {
-        selectedIdx = 0
+        gMeme.selectedLineIdx = 0
         gCurrLine = gMeme.lines[0]
+        markSelectedLine(gCurrLine.posx,gCurrLine.posy)
         return;
     }
+}
+
+function markSelectedLine(x, y) {
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'red'
+    gCtx.beginPath()
+    gCtx.rect(x - 225, y - 50, 450, 80) // (x,y,width,height);
+    gCtx.stroke()
 }
 
 function drawAllLines() { // renders all the lines
@@ -86,22 +112,19 @@ function drawNewLine(text) {
     drawImg(gCurrUrl)
 }
 
-function onUpdateTxtSize(diff) {
+function updateTxtSize(diff) {
     gCurrLine.size += diff
     drawImg(gCurrUrl)
 }
 
-function onUpdateTxtPos(diff) {
+function updateTxtPos(diff) {
     gCurrLine.posy += diff
     drawImg(gCurrUrl)
-    //drawText(line.txt, line.posx, line.posy)
-    //drawAllLines()
 }
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
 }
-
 
 function getImgById(id) {
     return gImgs.find(function (img) {

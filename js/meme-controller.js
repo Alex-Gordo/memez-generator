@@ -5,11 +5,6 @@ function onInit() {
     renderImages()
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d')
-     window.addEventListener('resize', function(){
-        // gCanvas.width = window.innerWidth
-        // gCanvas.height = window.innerHeight
-        //resizeCanvas()
-    })
 }
 
 function resizeCanvas() {
@@ -32,39 +27,42 @@ function renderImages() {
     document.querySelector('.card-container').innerHTML = strHTML.join('');
 }
 
+
+function onOpenEditor() {
+    var elModal = document.querySelector('.modal')
+    elModal.innerHTML = strHTML
+    elModal.style.display = 'flex'
+}
+
+function onCloseModal() {
+    var elModal = document.querySelector('.modal')
+    elModal.style.display = 'none'
+}
+
 function onChangeLine(text) {
     drawNewLine(text)
+}
+
+function onSwitchLine() {
+    switchLine()
 }
 
 function onSelectMeme(imgSrc, id) {
     var currUrl = imgSrc
     drawImg(currUrl)
     updateImgId(id)
+    setTimeout (() => onMarkSelectedLine(gCurrLine.posx,gCurrLine.posy), 100)
+    //onOpenEditor()
 }
 
+function onMarkSelectedLine() {
+    markSelectedLine(gCurrLine.posx,gCurrLine.posy)
+}
 
+function onUpdateTxtSize(diff) {
+    updateTxtSize(diff)
+}
 
-
-
-// function onEditMeme() {
-//     var strHTML = `
-//     <div class="modal-header">
-//     <div class="title"> <button onclick="onCloseModal()" class="btn-close">&times;</button>
-//     </div>
-
-//     </div>
-//     </div>`
-//     var elModal = document.querySelector('.modal')
-//     var elOverlay = document.querySelector('.overlay')
-//     elModal.innerHTML = strHTML
-//     elModal.style.display = 'flex'
-//     elOverlay.style.display = 'flex'
-// }
-
-
-// function onCloseModal() {
-//     var elModal = document.querySelector('.modal')
-//     var elOverlay = document.querySelector('.overlay')
-//     elModal.style.display = 'none'
-//     elOverlay.style.display = 'none'
-// }
+function onUpdateTxtPos(diff) {
+    updateTxtPos(diff)
+}

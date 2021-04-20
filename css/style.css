@@ -20,7 +20,7 @@ html {
 body {
     margin: 0;
     font-size: .875rem;
-    background-color: lightsalmon;
+    background-color: #2a64b57a;
 }
 
 img {
@@ -29,29 +29,12 @@ img {
     object-position: top;
 }
 
-/* h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 1rem;
-    font-weight: normal;
-}
-
-h2 {
-    font-size: 1.875rem;
-}
-
-p {
-    margin: 0 0 1rem;
-} */
-
 a {
     text-decoration: none;
 }
 
-/* a:hover {
-    color: #000;
-} */
-
 button {
-    background: #eecfa8;
+    background: #ffd078e8;
     border: 1px solid black;
     color: black;
     cursor: pointer;
@@ -66,7 +49,8 @@ input[type=text] {
     font-size: 1rem;
     border: 1px solid grey;
     width: 50%;
-    background: #eecfa8;
+    background: #ffd078e8;
+    /* background: #eecfa8; */
 }
 
 /* LAYOUT */
@@ -95,6 +79,7 @@ input[type=text] {
 /* header */
 
 .nav-bar {
+    background-color: #ffd078e8;
     height: 100px;
     border-bottom: 1px #2b2b2b solid;
     margin-bottom: 1rem;
@@ -108,7 +93,7 @@ input[type=text] {
 }
 
 .logo::after {
-    color: rgb(251, 251, 251);
+    color: #2a64b57a;
     content: '.';
 }
 
@@ -165,23 +150,12 @@ input[type=text] {
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    max-height: 80%;
+    max-height: 95%;
     width: 80vw;
-    max-width: 80%;
+    max-width: 95%;
     background-color: #efe1b5;
     color: black;
     z-index: 10;
-    display: none;
-}
-
-.overlay {
-    position: fixed;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: none;
     display: none;
 }
 
@@ -232,10 +206,10 @@ input[type=text] {
     .logo {
         font-size: 1.2rem;
     }
-    .nav-bar{
+    .nav-bar {
         justify-content: space-between;
     }
-    .main-nav{
+    .main-nav {
         font-size: 0.7rem;
     }
     .search-bar input[type=text] {
@@ -244,7 +218,7 @@ input[type=text] {
     #my-canvas {
         width: 280px;
         margin-bottom: 1rem;
-        border: none;
+        /* border: none; */
         justify-content: center;
         justify-self: center;
     }
@@ -273,10 +247,10 @@ input[type=text] {
     .logo {
         font-size: 1.5rem;
     }
-    .nav-bar{
+    .nav-bar {
         justify-content: space-between;
     }
-    .main-nav{
+    .main-nav {
         font-size: 1rem;
     }
     .search-bar input[type=text] {
@@ -310,11 +284,18 @@ input[type=text] {
     }
 }
 
-
 /* LARGE */
 
 @media (min-width: 1000px) {
     .container {
         max-width: 1920px;
+    }
+}
+
+/* VERY LARGE */
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 3000px;
     }
 }
