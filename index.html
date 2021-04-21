@@ -40,19 +40,15 @@
             </div>
 
             <div class="settings-container container flex align-center">
-
-                <p class="font-setting-container flex">
+                <p class="font-setting-container flex align-center">
                     <label for="textColor">Text Color:</label>
-                    <input type="color" name="textColor" />
-
+                    <input type="color" onchange="onSetColor(this.value)" name="textColor" />
                     <label for="chooseFont">Font:</label>
                     <select class="chooseFont" onchange="onSetFont(this.value)">
                         <option value="impact">Impact</option>
-                        <option value="rock">Rock N' Roll</option>
+                        <option value="rock">Rock</option>
                     </select>
                 </p>
-
-
                 <img src="./icons/increase font - icon.png" alt="text-size-up" onclick="onUpdateTxtSize(5)"></button>
                 <img src="./icons/decrease font - icon.png" alt="text-size-down" onclick="onUpdateTxtSize(-5)"></button>
                 <img src="./icons/arrow-up.png" alt="text-position-up" onclick="onUpdateTxtPos(-20)"></button>
@@ -60,11 +56,11 @@
                 <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch-line"
                     onclick="onSwitchLine()"></button>
 
-                <img src="./icons/align-to-left.png" alt="align-left" onclick=""></button>
-                <img src="./icons/center-text-alignment.png" alt="align-center" onclick=""></button>
-                <img src="./icons/align-to-right.png" alt="align-right" onclick=""></button>
-                <img src="./icons/trash.png" alt="delete-line" onclick=""></button>
-                <img src="./icons/add.png" alt="add-line" onclick=""></button>
+                <img src="./icons/align-to-left.png" alt="align-left" onclick="onAlignLeft()"></button>
+                <img src="./icons/center-text-alignment.png" alt="align-center" onclick="onAlignCenter()"></button>
+                <img src="./icons/align-to-right.png" alt="align-right" onclick="onAlignRight()"></button>
+                <img src="./icons/trash.png" alt="delete-line" onclick="onRemoveSelectedLine()"></button>
+                <img src="./icons/add.png" alt="add-line" onclick="onCreateNewLine()"></button>
 
                 <button class="clear-btn" onclick="clearCanvas()">Clear Canvas</button>
                 <a href="#" onclick="downloadCanvas(this)" download="">Download meme</a>

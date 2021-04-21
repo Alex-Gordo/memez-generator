@@ -40,7 +40,7 @@ function onCloseModal() {
 }
 
 function onChangeLine(text) {
-    drawNewLine(text)
+    updateLineText(text)
 }
 
 function onSwitchLine() {
@@ -51,12 +51,12 @@ function onSelectMeme(imgSrc, id) {
     var currUrl = imgSrc
     drawImg(currUrl)
     updateImgId(id)
-    setTimeout (() => onMarkSelectedLine(gCurrLine.posx,gCurrLine.posy), 100)
+    setTimeout(() => onMarkSelectedLine(gCurrLine.posx, gCurrLine.posy), 100)
     //onOpenEditor()
 }
 
 function onMarkSelectedLine() {
-    markSelectedLine(gCurrLine.posx,gCurrLine.posy)
+    markSelectedLine(gCurrLine.posx, gCurrLine.posy)
 }
 
 function onUpdateTxtSize(diff) {
@@ -69,37 +69,30 @@ function onUpdateTxtPos(diff) {
 
 function onSetFont(font) {
     setFont(font);
-    // render lines with new font
+}
+
+function onSetColor(color) {
+    setColor(color);
+}
+
+function onAlignLeft(){
+    setAlignLeft()
+}
+
+function onAlignCenter(){
+    setAlignCenter()
+}
+
+function onAlignRight(){
+    setAlignRight()
+}
+
+function onRemoveSelectedLine(){
+    removeSelectedLine()
+}
+
+function onCreateNewLine(){
+    createNewLine()
 }
 
 
-//DOWNLOAD AND SHARE FUNCTIONS //
-
-function downloadCanvas(elLink) {
-    const data = gCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'my-img.jpg'
-}
-
-function downloadImg(elLink) {
-    var imgContent = gCanvas.toDataURL('image/jpeg');
-    elLink.href = imgContent
-}
-
-function onImgInput(ev) {
-    loadImageFromInput(ev, renderCanvas)
-}
-function loadImageFromInput(ev, onImageReady) {
-    document.querySelector('.share-container').innerHTML = ''
-    var reader = new FileReader();
-
-    reader.onload = function (event) {
-        var img = new Image();
-        img.onload = function () {
-            onImageReady(img)
-        }
-        console.log('event.target.result', event.target.result);
-        img.src = event.target.result;
-    }
-    reader.readAsDataURL(ev.target.files[0]);
-}

@@ -4,6 +4,8 @@ var gCanvas
 var gCtx
 var gKeywords = { 'happy': 12, 'funny': 1 }
 var gCurrFont = 'Impact'
+var gCurrColor = 'white'
+var gNumOfLines = 2
 
 var gImgs = [
     { id: 1, url: './meme-img/1.jpg', keywords: ['trump'] },
@@ -54,18 +56,51 @@ var gMeme = {
 var gCurrLine = gMeme.lines[0]
 var gCurrUrl
 
-function switchLine() { 
+
+function removeSelectedLine() {
+    console.log('removing line');
+}
+
+
+function createNewLine(text) {
+   var idx = gMeme.selectedLineIdx = gMeme.lines.length // select new line (index 2)
+    gNumOfLines = (gMeme.lines.length + 1) // change global count of lines (3)
+    //add a new object in the array lines
+    gMeme.lines.push(
+        {
+            txt: 'New Line',
+            size: 40,
+            align: 'center',
+            color: gCurrColor,
+            posx: gCanvas.width / 2,
+            posy: gCanvas.height / 2,
+        }
+    )
+    gCurrLine = gMeme.lines[idx]
+    //gCurrLine.txt = text
+    drawText(gCurrLine.txt, gCurrLine.posx, gCurrLine.posy, gCurrLine.size) 
+    drawImg(gCurrUrl)
+    markSelectedLine(gCurrLine.posx, gCurrLine.posy) //fix mark to not blink
+}
+
+function updateLineText(text) {
+    gCurrLine.txt = text
+    drawImg(gCurrUrl)
+}
+
+
+function switchLine() {
     var selectedIdx = gMeme.selectedLineIdx
     if (selectedIdx === 0) {
         gMeme.selectedLineIdx = 1
         gCurrLine = gMeme.lines[1]
-        markSelectedLine(gCurrLine.posx,gCurrLine.posy)
+        markSelectedLine(gCurrLine.posx, gCurrLine.posy)
         return;
     }
     if (selectedIdx === 1) {
         gMeme.selectedLineIdx = 0
         gCurrLine = gMeme.lines[0]
-        markSelectedLine(gCurrLine.posx,gCurrLine.posy)
+        markSelectedLine(gCurrLine.posx, gCurrLine.posy)
         return;
     }
 }
@@ -99,18 +134,14 @@ function drawImg(url) {
 }
 
 function drawText(text, x, y, fontSize) {
-    gCtx.lineWidth = 1
+    gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = gCurrLine.color
+    gCtx.fillStyle = gCurrColor
+    //gCtx.fillStyle = gCurrLine.color   // take color from line property , TODO : pick color per line
     gCtx.font = fontSize + 'px ' + gCurrFont
     gCtx.textAlign = gCurrLine.align
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
-}
-
-function drawNewLine(text) {
-    gCurrLine.txt = text
-    drawImg(gCurrUrl)
 }
 
 function updateTxtSize(diff) {
@@ -133,9 +164,28 @@ function getImgById(id) {
     })
 }
 
-function setFont(font){
-    gCurrFont= font;
+function setFont(font) {
+    gCurrFont = font;
     drawImg(gCurrUrl)
 }
 
+function setColor(color) {
+    gCurrColor = color
+    drawImg(gCurrUrl)
+}
+
+function setAlignLeft() {
+    gCurrLine.align = 'right'
+    drawImg(gCurrUrl)
+}
+
+function setAlignCenter() {
+    gCurrLine.align = 'center'
+    drawImg(gCurrUrl)
+}
+
+function setAlignRight() {
+    gCurrLine.align = 'left'
+    drawImg(gCurrUrl)
+}
 

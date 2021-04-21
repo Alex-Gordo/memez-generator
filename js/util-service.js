@@ -1,5 +1,36 @@
 'use strict'
 
+//DOWNLOAD AND SHARE FUNCTIONS //
+
+function downloadCanvas(elLink) {
+    const data = gCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-img.jpg'
+}
+
+function downloadImg(elLink) {
+    var imgContent = gCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
+}
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderCanvas)
+}
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+        var img = new Image();
+        img.onload = function () {
+            onImageReady(img)
+        }
+        console.log('event.target.result', event.target.result);
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(ev.target.files[0]);
+}
+
 function uploadImg(elForm, ev) {
     ev.preventDefault();
     document.getElementById('imgData').value = gCanvas.toDataURL("image/jpeg");
@@ -30,3 +61,4 @@ function doUploadImg(elForm, onSuccess) {
             console.error(err)
         })
 }
+
