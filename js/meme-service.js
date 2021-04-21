@@ -26,8 +26,8 @@ var gImgs = [
     { id: 16, url: './meme-img/16.jpg', keywords: [] },
     { id: 17, url: './meme-img/17.jpg', keywords: [] },
     { id: 18, url: './meme-img/18.jpg', keywords: [] },
-    { id: 19, url: './meme-img/19.jpg', keywords: [] },
-    { id: 20, url: './meme-img/20.jpg', keywords: [] },
+    // { id: 19, url: './meme-img/19.jpg', keywords: [] },
+    // { id: 20, url: './meme-img/20.jpg', keywords: [] },
 ]
 
 var gMeme = {
@@ -40,7 +40,7 @@ var gMeme = {
             align: 'center',
             color: 'white',
             posx: 250,
-            posy: 50,
+            posy: 60,
         },
         {
             txt: 'Second line',
@@ -63,7 +63,7 @@ function removeSelectedLine() {
     gMeme.selectedLineIdx = gMeme.lines[0]
     gCurrLine = gMeme.lines[0] // go to first line , if not stop
     //render new situation
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function createNewLine(text) {
@@ -83,19 +83,19 @@ function createNewLine(text) {
     gCurrLine = gMeme.lines[idx]
     //gCurrLine.txt = text
     drawText(gCurrLine.txt, gCurrLine.posx, gCurrLine.posy, gCurrLine.size)
-    drawImg(gCurrUrl)
+    renderImage()
     markSelectedLine(gCurrLine.posx, gCurrLine.posy) //fix mark to not blink
 }
 
 function updateLineText(text) {
     gCurrLine.txt = text
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function switchLine() {
-    drawImg(gCurrUrl)
+    renderImage()
     var idx = gMeme.selectedLineIdx
-    if (idx === (gNumOfLines-1)) {
+    if (idx === (gNumOfLines - 1)) {
         idx = 0
         gMeme.selectedLineIdx = idx
         gCurrLine = gMeme.lines[idx]
@@ -111,9 +111,9 @@ function switchLine() {
 function markSelectedLine(x, y) {
     setTimeout(() => {
         gCtx.lineWidth = 2
-        gCtx.strokeStyle = 'red'
+        gCtx.strokeStyle = 'white'
         gCtx.beginPath()
-        gCtx.rect(x - 225, y - 50, 450, 80) // (x,y,width,height);
+        gCtx.rect(x - 225, y - 50, 450, 80) // (x,y,width,height); // x.pos - width/2   // y.pos -(height-3)
         gCtx.stroke()
     }, 100)
 }
@@ -151,12 +151,12 @@ function drawText(text, x, y, fontSize) {
 
 function updateTxtSize(diff) {
     gCurrLine.size += diff
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function updateTxtPos(diff) {
     gCurrLine.posy += diff
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function clearCanvas() {
@@ -171,26 +171,26 @@ function getImgById(id) {
 
 function setFont(font) {
     gCurrFont = font;
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function setColor(color) {
     gCurrColor = color
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function setAlignLeft() {
     gCurrLine.align = 'right'
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function setAlignCenter() {
     gCurrLine.align = 'center'
-    drawImg(gCurrUrl)
+    renderImage()
 }
 
 function setAlignRight() {
     gCurrLine.align = 'left'
-    drawImg(gCurrUrl)
+    renderImage()
 }
 

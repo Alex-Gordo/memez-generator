@@ -25,58 +25,9 @@
         <button type="submit"><i class="fa fa-search"></i></button>
     </div>
 
-    <div class="meme-editor modal"></div>
-
-    <!-- //  This goes into modal -->
-    <!-- <div class="title"> <button onclick="onCloseModal()" class="btn-close">&times;</button> -->
-
-    <div class="canvas-container container flex align-center">
-        <canvas id="my-canvas" width="500" height="500">
-            Update your browser to enjoy canvas!
-        </canvas>
-        <form>
-            <div class="text-input-container container flex align-center">
-                <input oninput="onChangeLine(this.value)" type="text" name="text" placeholder="Enter your text..">
-            </div>
-
-            <div class="settings-container container flex align-center">
-                <p class="font-setting-container flex align-center">
-                    <label for="textColor">Text Color:</label>
-                    <input type="color" onchange="onSetColor(this.value)" name="textColor" />
-                    <label for="chooseFont">Font:</label>
-                    <select class="chooseFont" onchange="onSetFont(this.value)">
-                        <option value="impact">Impact</option>
-                        <option value="rock">Rock</option>
-                    </select>
-                </p>
-                <img src="./icons/increase font - icon.png" alt="text-size-up" onclick="onUpdateTxtSize(5)"></button>
-                <img src="./icons/decrease font - icon.png" alt="text-size-down" onclick="onUpdateTxtSize(-5)"></button>
-                <img src="./icons/arrow-up.png" alt="text-position-up" onclick="onUpdateTxtPos(-20)"></button>
-                <img src="./icons/arrow-down.png" alt="text-position-down" onclick="onUpdateTxtPos(20)"></button>
-                <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch-line"
-                    onclick="onSwitchLine()"></button>
-
-                <img src="./icons/align-to-left.png" alt="align-left" onclick="onAlignLeft()"></button>
-                <img src="./icons/center-text-alignment.png" alt="align-center" onclick="onAlignCenter()"></button>
-                <img src="./icons/align-to-right.png" alt="align-right" onclick="onAlignRight()"></button>
-                <img src="./icons/trash.png" alt="delete-line" onclick="onRemoveSelectedLine()"></button>
-                <img src="./icons/add.png" alt="add-line" onclick="onCreateNewLine()"></button>
-
-                <button class="clear-btn" onclick="clearCanvas()">Clear Canvas</button>
-                <a href="#" onclick="downloadCanvas(this)" download="">Download meme</a>
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                    <input name="img" id="imgData" type="hidden" />
-                    <button class="btn" type="submit">Publish</button>
-                </form>
-                <div class="share-container"></div>
-
-            </div>
-        </form>
+    <div class="meme-editor modal">
+        <!--  MODAL CONTENT -->
     </div>
-    <!-- //  This goes into modal -->
-
-
-
 
     <main class="main-content container card-container"></main>
     <footer class="main-footer">

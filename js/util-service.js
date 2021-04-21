@@ -3,9 +3,12 @@
 //DOWNLOAD AND SHARE FUNCTIONS //
 
 function downloadCanvas(elLink) {
+    renderImage()
+    //setTimeout(() => {
     const data = gCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img.jpg'
+    //}, 100)
 }
 
 function downloadImg(elLink) {

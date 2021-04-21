@@ -1,10 +1,7 @@
 'use strict'
 
-
 function onInit() {
     renderImages()
-    gCanvas = document.querySelector('#my-canvas');
-    gCtx = gCanvas.getContext('2d')
 }
 
 function resizeCanvas() {
@@ -13,7 +10,6 @@ function resizeCanvas() {
     gCanvas.width = elContainer.offsetWidth
     gCanvas.height = elContainer.offsetHeight
 }
-
 
 function renderImages() {
     //var images = loadFromStorage(KEY) //add storage later
@@ -27,11 +23,55 @@ function renderImages() {
     document.querySelector('.card-container').innerHTML = strHTML.join('');
 }
 
-
 function onOpenEditor() {
     var elModal = document.querySelector('.modal')
+    var strHTML = 
+        `
+        <div class="title"> <button onclick="onCloseModal()" class="btn-close">&times;</button>
+        <div class="canvas-container container flex align-center">
+            <canvas id="my-canvas" width="500" height="500">
+                Update your browser to enjoy canvas!
+            </canvas>
+            <form>
+                <div class="text-input-container container flex align-center">
+                    <input oninput="onChangeLine(this.value)" type="text" name="text" placeholder="Enter your text..">
+                </div>
+                <div class="settings-container container flex align-center">
+                    <p class="font-setting-container flex align-center">
+                        <label for="textColor">Text Color:</label>
+                        <input type="color" onchange="onSetColor(this.value)" name="textColor" />
+                        <label for="chooseFont">Font:</label>
+                        <select class="chooseFont" onchange="onSetFont(this.value)">
+                            <option value="impact">Impact</option>
+                            <option value="rock">Rock</option>
+                        </select>
+                    </p>
+                    <img src="./icons/increase font - icon.png" alt="text-size-up" onclick="onUpdateTxtSize(5)"></button>
+                    <img src="./icons/decrease font - icon.png" alt="text-size-down" onclick="onUpdateTxtSize(-5)"></button>
+                    <img src="./icons/arrow-up.png" alt="text-position-up" onclick="onUpdateTxtPos(-20)"></button>
+                    <img src="./icons/arrow-down.png" alt="text-position-down" onclick="onUpdateTxtPos(20)"></button>
+                    <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch-line"
+                        onclick="onSwitchLine()"></button>
+                    <img src="./icons/align-to-left.png" alt="align-left" onclick="onAlignLeft()"></button>
+                    <img src="./icons/center-text-alignment.png" alt="align-center" onclick="onAlignCenter()"></button>
+                    <img src="./icons/align-to-right.png" alt="align-right" onclick="onAlignRight()"></button>
+                    <img src="./icons/trash.png" alt="delete-line" onclick="onRemoveSelectedLine()"></button>
+                    <img src="./icons/add.png" alt="add-line" onclick="onCreateNewLine()"></button>
+                    <button class="clear-btn" onclick="clearCanvas()">Clear Canvas</button>
+                    <a href="#" onclick="downloadCanvas(this)" download="">Download meme</a>
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="btn" type="submit">Share on Facebook</button>
+                    </form>
+                    <div class="share-container"></div>
+                </div>
+            </form>
+        </div>
+        `
     elModal.innerHTML = strHTML
     elModal.style.display = 'flex'
+    gCanvas = document.querySelector('#my-canvas');
+    gCtx = gCanvas.getContext('2d')
 }
 
 function onCloseModal() {
@@ -52,7 +92,7 @@ function onSelectMeme(imgSrc, id) {
     drawImg(currUrl)
     updateImgId(id)
     setTimeout(() => onMarkSelectedLine(gCurrLine.posx, gCurrLine.posy), 100)
-    //onOpenEditor()
+    onOpenEditor()
 }
 
 function onMarkSelectedLine() {
@@ -61,10 +101,12 @@ function onMarkSelectedLine() {
 
 function onUpdateTxtSize(diff) {
     updateTxtSize(diff)
+    onMarkSelectedLine()
 }
 
 function onUpdateTxtPos(diff) {
     updateTxtPos(diff)
+    onMarkSelectedLine()
 }
 
 function onSetFont(font) {
@@ -75,27 +117,29 @@ function onSetColor(color) {
     setColor(color);
 }
 
-function onAlignLeft(){
+function onAlignLeft() {
     setAlignLeft()
 }
 
-function onAlignCenter(){
+function onAlignCenter() {
     setAlignCenter()
 }
 
-function onAlignRight(){
+function onAlignRight() {
     setAlignRight()
 }
 
-function onRemoveSelectedLine(){
+function onRemoveSelectedLine() {
     removeSelectedLine()
+    onMarkSelectedLine()
 }
 
-function onCreateNewLine(){
+function onCreateNewLine() {
     createNewLine()
+    onMarkSelectedLine()
 }
 
-function renderImage(){
+function renderImage() {
     drawImg(gCurrUrl)
 }
 
