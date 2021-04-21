@@ -56,14 +56,18 @@ var gMeme = {
 var gCurrLine = gMeme.lines[0]
 var gCurrUrl
 
-
 function removeSelectedLine() {
-    console.log('removing line');
+    var idx = gMeme.selectedLineIdx
+    gMeme.lines.splice(idx, 1) //works and updates database
+    gNumOfLines-- // updates number of lines
+    gMeme.selectedLineIdx = gMeme.lines[0]
+    gCurrLine = gMeme.lines[0] // go to first line , if not stop
+    //render new situation
+    drawImg(gCurrUrl)
 }
 
-
 function createNewLine(text) {
-   var idx = gMeme.selectedLineIdx = gMeme.lines.length // select new line (index 2)
+    var idx = gMeme.selectedLineIdx = gMeme.lines.length // select new line (index 2)
     gNumOfLines = (gMeme.lines.length + 1) // change global count of lines (3)
     //add a new object in the array lines
     gMeme.lines.push(
@@ -78,7 +82,7 @@ function createNewLine(text) {
     )
     gCurrLine = gMeme.lines[idx]
     //gCurrLine.txt = text
-    drawText(gCurrLine.txt, gCurrLine.posx, gCurrLine.posy, gCurrLine.size) 
+    drawText(gCurrLine.txt, gCurrLine.posx, gCurrLine.posy, gCurrLine.size)
     drawImg(gCurrUrl)
     markSelectedLine(gCurrLine.posx, gCurrLine.posy) //fix mark to not blink
 }
@@ -88,29 +92,30 @@ function updateLineText(text) {
     drawImg(gCurrUrl)
 }
 
-
 function switchLine() {
-    var selectedIdx = gMeme.selectedLineIdx
-    if (selectedIdx === 0) {
-        gMeme.selectedLineIdx = 1
-        gCurrLine = gMeme.lines[1]
+    drawImg(gCurrUrl)
+    var idx = gMeme.selectedLineIdx
+    if (idx === (gNumOfLines-1)) {
+        idx = 0
+        gMeme.selectedLineIdx = idx
+        gCurrLine = gMeme.lines[idx]
         markSelectedLine(gCurrLine.posx, gCurrLine.posy)
-        return;
+        return
     }
-    if (selectedIdx === 1) {
-        gMeme.selectedLineIdx = 0
-        gCurrLine = gMeme.lines[0]
-        markSelectedLine(gCurrLine.posx, gCurrLine.posy)
-        return;
-    }
+    idx++
+    gMeme.selectedLineIdx = idx
+    gCurrLine = gMeme.lines[idx]
+    markSelectedLine(gCurrLine.posx, gCurrLine.posy)
 }
 
 function markSelectedLine(x, y) {
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'red'
-    gCtx.beginPath()
-    gCtx.rect(x - 225, y - 50, 450, 80) // (x,y,width,height);
-    gCtx.stroke()
+    setTimeout(() => {
+        gCtx.lineWidth = 2
+        gCtx.strokeStyle = 'red'
+        gCtx.beginPath()
+        gCtx.rect(x - 225, y - 50, 450, 80) // (x,y,width,height);
+        gCtx.stroke()
+    }, 100)
 }
 
 function drawAllLines() { // renders all the lines

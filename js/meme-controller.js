@@ -95,4 +95,8 @@ function onCreateNewLine(){
     createNewLine()
 }
 
+function renderImage(){
+    drawImg(gCurrUrl)
+}
+
 
