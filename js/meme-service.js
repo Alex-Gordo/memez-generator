@@ -191,6 +191,6 @@ function setAlignRight() {
     renderImage()
 }
 
-function saveMeme(){
+function saveMeme() {
     saveToStorage()
 }

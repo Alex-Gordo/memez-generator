@@ -56,23 +56,6 @@ select {
     background: #ffd078e8;
 }
 
-/* misc */
-
-button:hover {
-    background: #c1d0dd9c;
-    transition: 0.3s;
-}
-
-a:hover {
-    background: #c1d0dd9c;
-    transition: 0.3s;
-}
-
-img:hover {
-    border: 2px solid black;
-    transition: 0.1s;
-}
-
 /* LAYOUT */
 
 .container {
@@ -125,11 +108,6 @@ img:hover {
     color: inherit;
 }
 
-.main-nav a:hover {
-    color: rgb(255, 254, 254);
-    background: none;
-}
-
 /* search bar */
 
 .search-bar {
@@ -145,11 +123,6 @@ img:hover {
     padding: 5px 10px;
     border-radius: 3px;
     width: 3rem;
-}
-
-.search-bar button:hover {
-    background: #c1d0dd9c;
-    transition: 0.3s;
 }
 
 /* Settings */
@@ -253,6 +226,36 @@ img:hover {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+/* misc */
+
+button:hover {
+    background: #c1d0dd9c;
+    transition: 0.3s;
+    box-shadow: 0 1rem 1.25rem 0 rgba(3, 28, 85, 0.5), 0 -0.25rem 1.5rem rgb(194, 235, 11) inset, 0 0.75rem 0.5rem rgba(218, 197, 8, 0.829) inset, 0 0.25rem 0.5rem 0 rgb(250, 226, 6) inset;
+}
+
+.nav-bar a:hover {
+    color: rgb(255, 254, 254);
+    background: none;
+    box-shadow: none;
+}
+
+a:hover {
+    background: #c1d0dd9c;
+    transition: 0.3s;
+    box-shadow: 0 1rem 1.25rem 0 rgba(3, 28, 85, 0.5), 0 -0.25rem 1.5rem rgb(194, 235, 11) inset, 0 0.75rem 0.5rem rgba(218, 197, 8, 0.829) inset, 0 0.25rem 0.5rem 0 rgb(250, 226, 6) inset;
+}
+
+img:hover {
+    transition: 0.4s;
+    box-shadow: 0 1rem 1.25rem 0 rgba(3, 28, 85, 0.5), 0 -0.25rem 1.5rem rgb(194, 235, 11) inset, 0 0.75rem 0.5rem rgba(218, 197, 8, 0.829) inset, 0 0.25rem 0.5rem 0 rgb(250, 226, 6) inset;
+}
+
+.canvas-container img:hover {
+    box-shadow: 2px 2px;
+    transition: 0.4s;
 }
 
 /* MEDIA QUERIES */

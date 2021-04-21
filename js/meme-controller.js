@@ -74,9 +74,9 @@ function onOpenEditor() {
 }
 
 function onCloseModal() {
+    clearCanvas()
     var elModal = document.querySelector('.modal')
     elModal.style.display = 'none'
-    clearCanvas()
 }
 
 function onChangeLine(text) {
@@ -143,7 +143,7 @@ function renderImage() {
     drawImg(gCurrUrl)
 }
 
-function onSaveMeme(ev){
+function onSaveMeme(ev) {
     ev.preventDefault()
     saveMeme()
 }

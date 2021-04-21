@@ -5,9 +5,9 @@
 function downloadCanvas(elLink) {
     renderImage()
     setTimeout(() => {
-    const data = gCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'my-img.jpg'
+        const data = gCanvas.toDataURL()
+        elLink.href = data
+        elLink.download = 'my-img.jpg'
     }, 200)
 }
 
