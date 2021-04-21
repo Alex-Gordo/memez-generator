@@ -20,13 +20,14 @@ html {
 body {
     margin: 0;
     font-size: .875rem;
-    background-color: #2a64b57a;
+    background-color: #efe1b5;
 }
 
 img {
     width: 100%;
     object-fit: contain;
     object-position: top;
+    cursor: pointer;
 }
 
 a {
@@ -53,6 +54,23 @@ select {
     border: 1px solid grey;
     width: 23%;
     background: #ffd078e8;
+}
+
+/* misc */
+
+button:hover {
+    background: #c1d0dd9c;
+    transition: 0.3s;
+}
+
+a:hover {
+    background: #c1d0dd9c;
+    transition: 0.3s;
+}
+
+img:hover {
+    border: 2px solid black;
+    transition: 0.1s;
 }
 
 /* LAYOUT */
@@ -109,6 +127,7 @@ select {
 
 .main-nav a:hover {
     color: rgb(255, 254, 254);
+    background: none;
 }
 
 /* search bar */
@@ -126,6 +145,11 @@ select {
     padding: 5px 10px;
     border-radius: 3px;
     width: 3rem;
+}
+
+.search-bar button:hover {
+    background: #c1d0dd9c;
+    transition: 0.3s;
 }
 
 /* Settings */
@@ -162,11 +186,16 @@ select {
     margin-block-end: 1rem;
 }
 
-/* CANVAS */
-
-#my-canvas {
-    border: 1px solid rgb(0, 17, 255);
+.font-setting-container input {
+    min-width: 10rem;
+    margin-bottom: 0.5rem;
 }
+
+.font-setting-container select {
+    min-width: 10rem;
+}
+
+/* CANVAS */
 
 .canvas-container {
     justify-content: center;
@@ -176,20 +205,16 @@ select {
 
 /* MEME CREATE MODAL */
 
+.btn-close {
+    width: 3rem;
+}
+
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     border: 1px solid black;
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    max-height: 95%;
-    width: 80vw;
-    max-width: 95%;
-    background-color: #efe1b5;
-    color: black;
     z-index: 10;
     display: none;
 }
@@ -247,13 +272,25 @@ select {
     .main-nav {
         font-size: 0.7rem;
     }
+    .search-bar {
+        margin-bottom: 1rem;
+    }
     .search-bar input[type=text] {
         width: 55%;
+    }
+    .modal {
+        transform: translate(-50%, -50%);
+        border: 1px solid black;
+        border-radius: 10px;
+        width: 100vw;
+        height: 100vh;
+        background-color: #efe1b5;
+        z-index: 10;
     }
     #my-canvas {
         width: 280px;
         margin-bottom: 1rem;
-        /* border: none; */
+        border: none;
         justify-content: center;
         justify-self: center;
     }
@@ -275,7 +312,7 @@ select {
 
 /* SMALL */
 
-@media (min-width: 458px) {
+@media (min-width: 500px) {
     .container {
         max-width: 800px;
     }
@@ -291,6 +328,9 @@ select {
     .search-bar input[type=text] {
         width: 40%;
     }
+    .canvas-container {
+        max-width: 500px;
+    }
     #my-canvas {
         width: 400px;
     }
@@ -301,14 +341,38 @@ select {
     }
 }
 
+/* SMALL-MED */
+
+@media (min-width: 500px) {
+    .container {
+        max-width: 725px;
+    }
+    #my-canvas {
+        width: 450px;
+    }
+    .font-setting-container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .settings-container {
+        justify-content: space-between;
+    }
+    .font-setting-container input {
+        min-width: 7rem;
+    }
+    .font-setting-container select {
+        min-width: 7rem;
+    }
+}
+
 /* MEDIUM */
 
-@media (min-width: 800px) {
+@media (min-width: 775px) {
     .container {
         max-width: 1000px;
     }
     #my-canvas {
-        width: 500px;
+        width: 400px;
     }
     .canvas-container {
         justify-content: center;
@@ -318,6 +382,14 @@ select {
     .logo {
         font-size: 1.875rem;
     }
+    .font-setting-container input {
+        min-width: 4rem;
+        font-size: 0.5rem;
+    }
+    .font-setting-container select {
+        min-width: 7rem;
+        font-size: 0.8rem;
+    }
 }
 
 /* LARGE */
@@ -326,15 +398,13 @@ select {
     .container {
         max-width: 1920px;
     }
-    .canvas-container {
-        max-width: 1000px;
+    #my-canvas {
+        width: 500px;
     }
-}
-
-/* VERY LARGE */
-
-@media (min-width: 1920px) {
-    .container {
-        max-width: 3000px;
+    .canvas-container {
+        max-width: 1920px;
+    }
+    .settings-container {
+        max-width: 560px;
     }
 }

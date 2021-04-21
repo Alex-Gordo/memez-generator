@@ -4,11 +4,11 @@
 
 function downloadCanvas(elLink) {
     renderImage()
-    //setTimeout(() => {
+    setTimeout(() => {
     const data = gCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img.jpg'
-    //}, 100)
+    }, 200)
 }
 
 function downloadImg(elLink) {

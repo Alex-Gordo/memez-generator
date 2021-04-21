@@ -58,17 +58,16 @@ var gCurrUrl
 
 function removeSelectedLine() {
     var idx = gMeme.selectedLineIdx
-    gMeme.lines.splice(idx, 1) //works and updates database
-    gNumOfLines-- // updates number of lines
+    gMeme.lines.splice(idx, 1)
+    gNumOfLines--
     gMeme.selectedLineIdx = gMeme.lines[0]
-    gCurrLine = gMeme.lines[0] // go to first line , if not stop
-    //render new situation
+    gCurrLine = gMeme.lines[0]
     renderImage()
 }
 
 function createNewLine(text) {
-    var idx = gMeme.selectedLineIdx = gMeme.lines.length // select new line (index 2)
-    gNumOfLines = (gMeme.lines.length + 1) // change global count of lines (3)
+    var idx = gMeme.selectedLineIdx = gMeme.lines.length
+    gNumOfLines = (gMeme.lines.length + 1)
     //add a new object in the array lines
     gMeme.lines.push(
         {
@@ -81,10 +80,9 @@ function createNewLine(text) {
         }
     )
     gCurrLine = gMeme.lines[idx]
-    //gCurrLine.txt = text
     drawText(gCurrLine.txt, gCurrLine.posx, gCurrLine.posy, gCurrLine.size)
     renderImage()
-    markSelectedLine(gCurrLine.posx, gCurrLine.posy) //fix mark to not blink
+    markSelectedLine(gCurrLine.posx, gCurrLine.posy)
 }
 
 function updateLineText(text) {
@@ -118,7 +116,7 @@ function markSelectedLine(x, y) {
     }, 100)
 }
 
-function drawAllLines() { // renders all the lines
+function drawAllLines() {
     gMeme.lines.map(function (line) {
         drawText(line.txt, line.posx, line.posy, line.size)
     })
@@ -142,7 +140,6 @@ function drawText(text, x, y, fontSize) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = gCurrColor
-    //gCtx.fillStyle = gCurrLine.color   // take color from line property , TODO : pick color per line
     gCtx.font = fontSize + 'px ' + gCurrFont
     gCtx.textAlign = gCurrLine.align
     gCtx.fillText(text, x, y)
@@ -194,3 +191,6 @@ function setAlignRight() {
     renderImage()
 }
 
+function saveMeme(){
+    saveToStorage()
+}

@@ -12,7 +12,6 @@ function resizeCanvas() {
 }
 
 function renderImages() {
-    //var images = loadFromStorage(KEY) //add storage later
     var strHTML = gImgs.map(function (image) {
         return `
         <div class="card">
@@ -25,7 +24,7 @@ function renderImages() {
 
 function onOpenEditor() {
     var elModal = document.querySelector('.modal')
-    var strHTML = 
+    var strHTML =
         `
         <div class="title"> <button onclick="onCloseModal()" class="btn-close">&times;</button>
         <div class="canvas-container container flex align-center">
@@ -57,7 +56,7 @@ function onOpenEditor() {
                     <img src="./icons/align-to-right.png" alt="align-right" onclick="onAlignRight()"></button>
                     <img src="./icons/trash.png" alt="delete-line" onclick="onRemoveSelectedLine()"></button>
                     <img src="./icons/add.png" alt="add-line" onclick="onCreateNewLine()"></button>
-                    <button class="clear-btn" onclick="clearCanvas()">Clear Canvas</button>
+                    <button class="save-btn" onclick="onSaveMeme(event)">Save meme to gallery</button>
                     <a href="#" onclick="downloadCanvas(this)" download="">Download meme</a>
                     <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                         <input name="img" id="imgData" type="hidden" />
@@ -77,6 +76,7 @@ function onOpenEditor() {
 function onCloseModal() {
     var elModal = document.querySelector('.modal')
     elModal.style.display = 'none'
+    clearCanvas()
 }
 
 function onChangeLine(text) {
@@ -143,4 +143,8 @@ function renderImage() {
     drawImg(gCurrUrl)
 }
 
+function onSaveMeme(ev){
+    ev.preventDefault()
+    saveMeme()
+}
 
